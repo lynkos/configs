@@ -22,11 +22,6 @@ wine() {
     MTL_HUD_ENABLED=0 D3DM_SUPPORT_DXR=1 ROSETTA_ADVERTISE_AVX=1 WINEESYNC=1 WINEFSYNC=1 WINE_LARGE_ADDRESS_AWARE=1 WINEDEBUG=-all,fixme-all WINEPREFIX=$HOME/Games `brew --prefix game-porting-toolkit`/bin/wine64 "$@";
 }
 
-# Launch Windows version of Steam
-steam() {
-    wine "C:\Program Files (x86)\Steam\steam.exe"
-}
-
 # Wine
 alias winecfg="wine winecfg"
 alias regedit="wine regedit"
@@ -44,4 +39,9 @@ fi
 # Options: on, off, auto
 game-mode() {
     /Applications/Xcode.app/Contents/Developer/usr/bin/gamepolicyctl game-mode set "$1"
+}
+
+# Launch Windows version of Steam
+steam() {
+    wine "C:\Program Files (x86)\Steam\steam.exe"
 }
