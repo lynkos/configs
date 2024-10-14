@@ -1,0 +1,21 @@
+[user]
+	name = lynkos
+	email = insert_email_here@domain.com
+	signingkey = $HOME/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = $HOME/.ssh/allowed_signers
+[tag]
+	gpgsign = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
