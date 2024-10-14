@@ -8,7 +8,6 @@ export CLICOLOR=1
 export LSCOLORS="exfxfeaeBxxehehbadacea"
 
 export HOMEBREW_NO_ENV_HINTS=1
-export SHELL="/usr/bin/env"
 export LD_LIBRARY_PATH="/usr/local/lib"
 export CONDA_AUTO_ACTIVATE_BASE=false
 export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
