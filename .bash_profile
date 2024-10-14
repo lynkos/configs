@@ -36,7 +36,8 @@ mkenv() {
    else
       cmd=()
       for arg in "$@"; do
-         case "${arg}" in *.yml | *.YML | *.yaml | *.YAML)
+         case "${arg}" in
+         *.[yY][mM][lL] | *.[yY][aA][mM][lL])
             if [[ ${#cmd[@]} -ne 0 ]]; then
                conda create -n "${cmd[@]}"
                unset cmd
