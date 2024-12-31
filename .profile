@@ -11,6 +11,13 @@ export HOMEBREW_NO_ENV_HINTS=1
 export LD_LIBRARY_PATH="/usr/local/lib"
 export CONDA_AUTO_ACTIVATE_BASE=false
 export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
+export NVM_DIR="$HOME/.nvm"
+
+# Load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Load nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Auto-loads SSH key for specific repos in VS Code (git)
 if [[ -n $LOAD_SSH_KEY ]]; then
