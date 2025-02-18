@@ -1,7 +1,7 @@
 [user]
-	name = lynkos
-	email = insert_email_here@domain.com
-	signingkey = $HOME/.ssh/id_ed25519.pub
+	name = Kiran Brahmatewari
+	email = kiwi2mii@gmail.com
+	signingkey = /Users/kiran/.ssh/id_ed25519.pub
 [gpg]
 	format = ssh
 [commit]
@@ -19,3 +19,7 @@
 	defaultBranch = main
 [core]
 	autocrlf = input
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
