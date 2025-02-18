@@ -4,23 +4,11 @@
 [[ -r "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
-# Path to terminal theme (i.e. Pywal)
-export PATH="${PATH}:$HOME/Library/Python/3.12/lib/python/site-packages"
+# Load nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export BASH_SILENCE_DEPRECATION_WARNING="1"
 export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
-
-export SSH_KEY_PATH=~/.ssh/id_ed25519
-
-# Auto-loads SSH key for specific repos in VS Code (git)
-if [[ -n $LOAD_SSH_KEY ]]; then
-    eval "$LOAD_SSH_KEY"
-fi
-
-# Auto-runs `npm run dev` for specific repos in VS Code (git)
-if [[ -n $AUTORUN_DEV ]]; then
-    eval "$AUTORUN_DEV"
-fi
 
 # Confirm by prompting user for yes or no
 ask() {
@@ -159,8 +147,3 @@ lsenv() {
       conda list
    fi
 }
-
-# Ruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.4.1
