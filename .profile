@@ -1,6 +1,9 @@
 #!/bin/sh
 
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/Current/bin:$HOME/Library/Python/3.12/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/Current/bin:$HOME/Library/Python/3.12/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+
+# Path to terminal theme (i.e. Pywal)
+export PATH="${PATH}:$HOME/Library/Python/3.12/lib/python/site-packages"
 
 # Manual terminal color customization
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
@@ -16,18 +19,20 @@ export NVM_DIR="$HOME/.nvm"
 # Load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Load nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Load SSH keys
+ssh-load() {
+    /usr/bin/ssh-add --apple-load-keychain -q
+}
 
 # Auto-loads SSH key for specific repos in VS Code (git)
 if [[ -n $LOAD_SSH_KEY ]]; then
     eval "$LOAD_SSH_KEY"
 fi
 
-# Load SSH keys
-ssh-load() {
-    /usr/bin/ssh-add --apple-load-keychain -q
-}
+# Auto-runs `npm run dev` for specific repos in VS Code (git)
+if [[ -n $AUTORUN_DEV ]]; then
+    eval "$AUTORUN_DEV"
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -43,3 +48,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Ruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.4.1
