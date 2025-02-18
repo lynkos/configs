@@ -87,5 +87,3 @@ v2g() {
     ffmpeg -i "$src" -pix_fmt rgb8 $fps $resolution "$target"
     osascript -e "display notification \"$target successfully converted and saved\" with title \"v2g complete\""
 }
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
