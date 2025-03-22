@@ -24,16 +24,6 @@ ssh-load() {
     /usr/bin/ssh-add --apple-load-keychain -q
 }
 
-# Auto-loads SSH key for specific repos in VS Code (git)
-if [[ -n $LOAD_SSH_KEY ]]; then
-    eval "$LOAD_SSH_KEY"
-fi
-
-# Auto-runs `npm run dev` for specific repos in VS Code (git)
-if [[ -n $AUTORUN_DEV ]]; then
-    eval "$AUTORUN_DEV"
-fi
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.sh' 'hook' 2> /dev/null)"
