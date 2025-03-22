@@ -7,8 +7,15 @@
 # Load nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export BASH_SILENCE_DEPRECATION_WARNING="1"
-export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
+# Auto-loads SSH key for specific repos in VS Code (git)
+if [[ -n $LOAD_SSH_KEY ]]; then
+    eval "$LOAD_SSH_KEY"
+fi
+
+# Auto-runs `npm run dev` for specific repos in VS Code (git)
+if [[ -n $AUTORUN_DEV ]]; then
+    eval "$AUTORUN_DEV"
+fi
 
 # Confirm by prompting user for yes or no
 ask() {
