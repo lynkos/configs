@@ -15,7 +15,7 @@ export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
 # Run wine with multiple arguments
 # Execute alias `x86` (i.e. `arch -x86_64 /bin/bash`) beforehand
 wine() {
-    MTL_HUD_ENABLED=0 D3DM_SUPPORT_DXR=1 ROSETTA_ADVERTISE_AVX=1 WINEESYNC=1 WINEFSYNC=1 WINE_LARGE_ADDRESS_AWARE=1 WINEDEBUG=-all,fixme-all WINEPREFIX=$HOME/Games wine64 "$@";
+    MTL_HUD_ENABLED=0 D3DM_SUPPORT_DXR=1 ROSETTA_ADVERTISE_AVX=1 WINEESYNC=1 WINEFSYNC=1 WINE_LARGE_ADDRESS_AWARE=1 WINEDEBUG=-all,fixme-all WINEPREFIX=$HOME/Games /usr/local/bin/wine64 "$@";
 }
 
 # Rewrite with "$(brew --prefix)/bin/brew"?
