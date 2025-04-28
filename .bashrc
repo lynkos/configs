@@ -9,13 +9,10 @@ cat "$HOME/.cache/wal/sequences" &
 # Random dark terminal theme each time it's opened
 wal --theme random_dark -q
 
-export BASH_SILENCE_DEPRECATION_WARNING="1"
-export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
-
 # Run wine with multiple arguments
 # Execute alias `x86` (i.e. `arch -x86_64 /bin/bash`) beforehand
 wine() {
-    MTL_HUD_ENABLED=0 D3DM_SUPPORT_DXR=1 ROSETTA_ADVERTISE_AVX=1 WINEESYNC=1 WINEFSYNC=1 WINE_LARGE_ADDRESS_AWARE=1 WINEDEBUG=-all,fixme-all WINEPREFIX=$HOME/Games /usr/local/bin/wine64 "$@";
+    MTL_HUD_ENABLED=1 D3DM_SUPPORT_DXR=1 ROSETTA_ADVERTISE_AVX=1 DXVK_ASYNC=1 WINEMSYNC=1 WINEESYNC=1 WINEFSYNC=1 WINEDLLOVERRIDES="dinput8=n,b;d3d11,d3d10,d3d12,dxgi=b" WINEDEBUG="-all" WINEPREFIX=$HOME/Games $(brew --prefix game-porting-toolkit)/bin/wine64 "$@";
 }
 
 # Rewrite with "$(brew --prefix)/bin/brew"?
@@ -30,6 +27,11 @@ fi
 # Options: on, off, auto
 game-mode() {
     /Applications/Xcode.app/Contents/Developer/usr/bin/gamepolicyctl game-mode set "$1"
+}
+
+# Options: Y, N
+retina-mode() {
+    WINEPREFIX=$HOME/Games $(brew --prefix game-porting-toolkit)/bin/wine64 reg add 'HKEY_CURRENT_USER\Software\Wine\Mac Driver' /v RetinaMode /t REG_SZ /d "'$1'" /f
 }
 
 # Launch Windows version of Steam
