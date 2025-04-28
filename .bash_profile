@@ -2,10 +2,6 @@
 
 [[ -r "$HOME/.profile" ]] && . "$HOME/.profile"
 [[ -r "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-
-# Load nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Auto-loads SSH key for specific repos in VS Code (git)
 if [[ -n $LOAD_SSH_KEY ]]; then
@@ -53,6 +49,7 @@ mkenv() {
             [[ -f "$arg" ]] && conda env create -f "$arg" ||
             echo "ERROR: $arg doesn't exist."
             ;;
+
          *)
             cmd+=("${arg}")
             ;;
