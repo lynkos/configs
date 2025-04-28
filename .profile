@@ -5,6 +5,12 @@ export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/Current/bin:$HO
 # Path to terminal theme (i.e. Pywal)
 export PATH="${PATH}:$HOME/Library/Python/3.12/lib/python/site-packages"
 
+# For newest bash version
+export PATH="$(brew --prefix)/bin:$PATH"
+
+# Rust & Cargo
+. "$HOME/.cargo/env"
+
 # Manual terminal color customization
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
