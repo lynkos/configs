@@ -5,7 +5,7 @@ alias ls="ls -aGH"
 alias make="/usr/bin/make"
 alias dirname="/usr/bin/dirname"
 alias readlink="/usr/bin/readlink"
-alias nproc="$(xcrun --sdk macosx --show-sdk-path)"
+alias nproc="sysctl -n hw.logicalcpu"
 
 # SSH Keys
 alias ssh-add="/usr/bin/ssh-add"
