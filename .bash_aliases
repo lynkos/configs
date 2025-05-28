@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
 # System
-alias ls="ls -aGH"
+alias ls="ls -aGHl --color=always"
 alias make="/usr/bin/make"
 alias dirname="/usr/bin/dirname"
 alias readlink="/usr/bin/readlink"
 alias nproc="sysctl -n hw.logicalcpu"
+alias f="file *"
+alias tree="tree --noreport"
 
 # SSH Keys
 alias ssh-add="/usr/bin/ssh-add"
-alias load-key="/usr/bin/ssh-add --apple-load-keychain -q"
+alias ssh-load="/usr/bin/ssh-add --apple-load-keychain -q"
 
 # Programs
 alias py="python"
@@ -20,4 +22,4 @@ alias hf="huggingface-cli"
 # Wine
 alias winecfg="WINEPREFIX=$HOME/Games /usr/local/bin/wine64 winecfg"
 alias regedit="WINEPREFIX=$HOME/Games /usr/local/bin/wine64 regedit"
-alias endwine="killall -9 wineserver && killall -9 wine64-preloader"
+alias endwine="wineserver -k 15 || killall -9 wineserver || killall -9 wine64-preloader"
