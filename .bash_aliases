@@ -5,9 +5,11 @@ alias ls="ls -aGHl --color=always"
 alias make="/usr/bin/make"
 alias dirname="/usr/bin/dirname"
 alias readlink="/usr/bin/readlink"
-alias nproc="sysctl -n hw.logicalcpu"
-alias f="file *"
+alias nproc="sysctl -n hw.logicalcpu" # OR hw.logicalcpu
+alias fl="file *"
 alias tree="tree --noreport"
+alias cptree="tree | pbcopy"
+alias cache="$(getconf DARWIN_USER_CACHE_DIR)"
 
 # SSH Keys
 alias ssh-add="/usr/bin/ssh-add"
