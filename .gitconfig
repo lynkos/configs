@@ -1,6 +1,6 @@
 [user]
-	name = <MY_NAME>
-	email = <MY_EMAIL>
+	name = MY_NAME
+	email = MY_EMAIL
 	signingkey = ~/.ssh/id_ed25519.pub
 [gpg]
 	format = ssh
@@ -19,6 +19,7 @@
 	defaultBranch = main
 [core]
 	autocrlf = input
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
 [credential]
