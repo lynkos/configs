@@ -1,12 +1,18 @@
 #!/bin/sh
 
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/Current/bin:$HOME/Library/Python/3.12/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/Current/bin:$HOME/Library/Python/3.12/bin"
 
 # Path to terminal theme (i.e. Pywal)
 export PATH="${PATH}:$HOME/Library/Python/3.12/lib/python/site-packages"
 
 # For newest bash version
 export PATH="$(brew --prefix)/bin:$PATH"
+
+# For newest Bison version
+export PATH="$(brew --prefix bison)/bin:$PATH"
+
+# To install symlinks for compilers that will automatically use ccache
+export PATH="$(brew --prefix)/opt/ccache/libexec:$PATH"
 
 # Rust & Cargo
 . "$HOME/.cargo/env"
@@ -21,14 +27,13 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 export CONDA_AUTO_ACTIVATE_BASE=false
 export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 export NVM_DIR="$HOME/.nvm"
+export CMAKE_GENERATOR=Ninja
+
+# Hugging Face Access Token
+export HF_TOKEN="INSERT_HF_TOKEN_HERE"
 
 # Load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Load SSH keys
-ssh-load() {
-    /usr/bin/ssh-add --apple-load-keychain -q
-}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
