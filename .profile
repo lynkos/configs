@@ -30,7 +30,16 @@ export NVM_DIR="$HOME/.nvm"
 export CMAKE_GENERATOR=Ninja
 
 # Hugging Face Access Token
-export HF_TOKEN="INSERT_HF_TOKEN_HERE"
+export HF_TOKEN="INSERT_TOKEN_HERE"
+
+# libffi is keg-only, which means it was not symlinked into /opt/homebrew, because macOS already provides this software and installing another version in parallel can cause all kinds of trouble
+
+# For compilers to find libffi
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+
+# For pkgconf to find libffi
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
 # Load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
