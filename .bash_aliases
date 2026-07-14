@@ -12,6 +12,7 @@ alias cptree="tree | pbcopy"
 alias cache="$(getconf DARWIN_USER_CACHE_DIR)"
 alias stash="git stash"
 alias pop="git stash pop"
+alias gamepolicyctl="/Applications/Xcode.app/Contents/Developer/usr/bin/gamepolicyctl"
 
 # SSH Keys
 alias ssh-add="/usr/bin/ssh-add"
