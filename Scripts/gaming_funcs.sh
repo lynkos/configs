@@ -50,7 +50,7 @@
 #    endwine DXMT                                                          #
 #    ```                                                                   #
 # ------------------------------------------------------------------------ #
-#                      https://gist.github.com/lynkos                      #
+#                         https://github.com/lynkos                        #
 ############################################################################
 
 ############################### CONSTANTS ##################################
@@ -130,24 +130,28 @@ set-wine() {
         # Game Porting Toolkit
         "gptk")
             local winename="Game Porting Toolkit"
-            local variant_version="2.1"
-            local winepath="$WINE_DIR/gptk/2_1"
-            local wine_executable="wine64"
-            local wine_preloader="wine64-preloader"
-            local wineprefix="$BOTTLES_DIR/GPTk"
+            local variant_version="4.0 Beta 1"
+            local winepath="$WINE_DIR/gptk/4_0_b1"
+            local wine_executable="wine"
+            local wine_preloader="wine"
+            local wineprefix="$BOTTLES_DIR/GPTk_4_0_b1"
 
             export MTL_HUD_ENABLED=1
+            export MTL_CAPTURE_ENABLED=0
+            export D3DM_DXIL_PROCESS_DEBUG_INFORMATION=0
             export D3DM_SUPPORT_DXR=1
+            export D3DM_MTL4=1
+            export D3DM_MAX_FPS=60
             export D3DM_ENABLE_METALFX=0 # If `D3DM_ENABLE_METALFX=1`, set `WINEESYNC=0`
             export WINEESYNC=1 # `0` if `D3DM_ENABLE_METALFX=1` else `1`
-            export WINEDLLOVERRIDES="dinput8=n,b;d3d12,d3d11,d3d10,dxgi=b" # "winemenubuilder.exe=d"
+            export WINEDLLOVERRIDES="dinput8=n,b;d3d9,d3d10core,d3d11,d3d12,d3d12core,dxgi=n" # dinput8=n,b;d3d12,d3d11,d3d10,dxgi=b" # "winemenubuilder.exe=d"
             ;;
 
         # DirectX-Metal
         "dxmt")
             local winename="DirectX-Metal"
             local variant_version="v0.71"
-            local winepath="$WINE_DIR/dxmt/latest"
+            local winepath="$WINE_DIR/dxmt/10.18"
             local wine_executable="wine"
             local wine_preloader="wine"
             local wineprefix="$BOTTLES_DIR/DXMT"
@@ -272,7 +276,8 @@ dlg() {
       _dbug "Disk size of $dirname is: $size_on_disk"
 
       # TODO: If directory already exists, overwrite (or delete) it, else it'll exit; same with the upcoming directories
-
+      # FIXME: Fix bug when moving game to appropriate folders after download
+      
       # Move and rename downloaded directory into common
       mv "$temp" "$wineprefix/$STEAMAPPS_DIR/common/$dirname"
       _dbug "Moved and renamed game from '$STEAMAPPS_DIR_WIN\\temp\\$app_id' to '$STEAMAPPS_DIR_WIN\\common\\$dirname'"
@@ -634,10 +639,10 @@ steam() {
     anti-alias
 
     # Map 'Option' and 'Command' keys
-    # fix-kbd
+    fix-kbd
 
     # Enable game mode
-    # game-mode on # Don't uncomment this line till game-mode func's fixed
+    game-mode on
 
     _info "Steam configuration complete!"
 
