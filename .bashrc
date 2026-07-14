@@ -5,7 +5,7 @@
 
 # Apply pywal colors (i.e., terminal customization tool) to new terminals
 # TL;DR Diff terminal theme for each new tab opened
-cat "$HOME/.cache/wal/sequences" &
+cat "$HOME/.cache/wal/sequences"
 
 # Random dark terminal theme each time it's opened
 wal --theme random_dark -q
